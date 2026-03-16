@@ -1,0 +1,36 @@
+#+TITLE: shift-text.el — Shift Text Up/Down DWIM for Emacs
+#+AUTHOR: Dohna
+
+=shift-text.el= provides commands to move the current line or active region
+up or down, often referred to as "dragging" lines.  It "Does What I Mean"
+by automatically detecting whether to move a single line or the selected region.
+
+* Features
+- Move current line or active region up/down with =shift-text-up= and
+  =shift-text-down=
+- Automatically re-indents the moved text in supported major modes
+  (see =shift-text-indent-modes=).
+
+* Installation
+#+begin_src emacs-lisp
+(add-to-list 'load-path "/path/to/shift-text.el")
+(require 'shift-text)
+#+end_src
+
+* Usage
+Bind the commands to your preferred keys, for example:
+#+begin_src emacs-lisp
+(global-set-key (kbd "M-<up>") #'shift-text-up)
+(global-set-key (kbd "M-<down>") #'shift-text-down)
+#+end_src
+
+You can also provide a prefix argument to move by multiple lines:
+=C-u 5 M-<up>= will move the text 5 lines up.
+
+* Testing
+#+begin_src emacs-lisp
+emacs -batch -l ert -l shift-text-tests.el -f ert-run-tests-batch-and-exit
+#+end_src
+
+* License
+GPL-3.0-or-later
